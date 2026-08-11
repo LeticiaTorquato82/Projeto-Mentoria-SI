@@ -15,7 +15,11 @@ Esta API REST foi criada para gerenciar o ciclo de vida de tarefas em uma sprint
 ### Contrato JSON Schema
 O contrato de `Task` está disponível em `contracts/task.schema.json`.
 
-### Como executar
+### Pré-requisitos
+- Node.js 18+ instalado
+- Docker Desktop é opcional. Use apenas se tiver permissão para instalar e executar.
+
+### Como executar localmente com Node.js
 1. Instalar dependências:
    ```bash
    npm install
@@ -32,8 +36,17 @@ O contrato de `Task` está disponível em `contracts/task.schema.json`.
    ```bash
    npm run postman
    ```
+5. Corrigir vulnerabilidades de dependências:
+   ```bash
+   npm run audit:fix
+   ```
 
-### Docker
+### Alternativa sem Docker
+Se você não tem permissão para instalar Docker, apenas use os comandos acima.
+A API já funciona localmente com Node.js e os testes validam o projeto.
+
+### Docker (opcional)
+Se Docker estiver disponível, você pode usar os scripts a seguir:
 Construir a imagem Docker:
 ```bash
 npm run docker:build
