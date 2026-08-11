@@ -1,79 +1,159 @@
 # Mentoria-Julio-de-Lima
-Projeto de Portifólio pessoal Mentoria 2.0 em teste de Software
 
-## API de Acompanhamento de Entregas
-Esta API REST foi criada para gerenciar o ciclo de vida de tarefas em uma sprint, incluindo criação, consulta, atualização e exclusão.
+[![Build Status](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml/badge.svg)](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml)
 
-### Endpoints
-- `GET /api/tasks` — lista todas as tarefas
-- `POST /api/tasks` — cria nova tarefa
-- `GET /api/tasks/:id` — consulta tarefa por ID
-- `PUT /api/tasks/:id` — atualiza tarefa completa
-- `PATCH /api/tasks/:id/status` — atualiza somente o status
-- `DELETE /api/tasks/:id` — remove tarefa
+Projeto de API REST para gerenciamento de tarefas de sprint, com foco em automação de testes e validação de contrato.
 
-### Contrato JSON Schema
-O contrato de `Task` está disponível em `contracts/task.schema.json`.
+## Descrição do projeto
+Esta aplicação é uma API simples de acompanhamento de entregas de demandas. O objetivo é demonstrar o ciclo completo de CRUD de uma tarefa, com validação por JSON Schema e testes automatizados.
 
-### Pré-requisitos
-- Node.js 18+ instalado
-- Docker Desktop é opcional. Use apenas se tiver permissão para instalar e executar.
+## Tecnologias utilizadas
+- Node.js
+- Express
+- Ajv (validação JSON Schema)
+- Jest + Supertest (testes automatizados)
+- Newman + Postman (coleção de testes de API)
 
-### Como executar localmente com Node.js
-1. Instalar dependências:
+## Recursos implementados
+- CRUD completo de tarefas
+- Status de tarefa: `pending`, `in-progress`, `done`
+- Validação de payloads com JSON Schema
+- Rotas RESTful para gerenciamento de tarefas
+- Persistência temporária em arquivo local (`data/tasks.json`)
+- Workflow CI no GitHub Actions
+
+## Requisitos
+- Node.js 18 ou superior
+- npm instalado
+
+> Docker é opcional. Esta documentação presume execução local com Node.js.
+
+## Instalação e execução
+1. Clone o repositório e entre na pasta do projeto.
+2. Instale dependências:
    ```bash
    npm install
    ```
-2. Iniciar a API:
+3. Inicie a API:
    ```bash
    npm start
    ```
-3. Rodar testes automatizados:
-   ```bash
-   npm test
-   ```
-4. Executar coleção Postman com Newman:
-   ```bash
-   npm run postman
-   ```
-5. Corrigir vulnerabilidades de dependências:
-   ```bash
-   npm run audit:fix
+4. Acesse a API localmente em:
+   ```text
+   http://localhost:3000
    ```
 
-### Alternativa sem Docker
-Se você não tem permissão para instalar Docker, apenas use os comandos acima.
-A API já funciona localmente com Node.js e os testes validam o projeto.
+## Comandos principais
+- `npm install` — instala dependências
+- `npm start` — inicia a API
+- `npm test` — executa os testes automatizados
+- `npm run postman` — executa a coleção Postman via Newman
+- `npm run audit:fix` — tenta corrigir vulnerabilidades de dependências
 
-### Docker (opcional)
-Se Docker estiver disponível, você pode usar os scripts a seguir:
-Construir a imagem Docker:
+## Estrutura da API
+### Endpoints
+- `GET /api/tasks`
+  - Retorna a lista de tarefas
+- `POST /api/tasks`
+  - Cria uma nova tarefa
+- `GET /api/tasks/:id`
+  - Retorna uma tarefa por ID
+- `PUT /api/tasks/:id`
+  - Atualiza os dados de uma tarefa
+- `PATCH /api/tasks/:id/status`
+  - Atualiza apenas o status da tarefa
+- `DELETE /api/tasks/:id`
+  - Remove uma tarefa
+
+### Exemplos de requisições cURL
+Use `BASE_URL=http://localhost:3000` para executar os exemplos abaixo.
+
+#### Listar tarefas
 ```bash
-npm run docker:build
+curl -X GET "$BASE_URL/api/tasks" -H "Accept: application/json"
 ```
-Rodar o container localmente:
+
+#### Criar tarefa
 ```bash
-npm run docker:run
+curl -X POST "$BASE_URL/api/tasks" \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Implementar endpoint de tarefa","description":"Criar API REST para gestão de entregas","status":"pending"}'
 ```
-Rodar em detached mode:
+
+#### Consultar tarefa por ID
 ```bash
-docker run -d --rm -p 3000:3000 mentoria-julio-de-lima
+curl -X GET "$BASE_URL/api/tasks/{id}" -H "Accept: application/json"
 ```
-Executar testes no container:
+
+#### Atualizar tarefa completa
 ```bash
-npm run docker:test
+curl -X PUT "$BASE_URL/api/tasks/{id}" \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Tarefa atualizada","description":"Descrição atualizada","status":"in-progress"}'
+```
+
+#### Atualizar status da tarefa
+```bash
+curl -X PATCH "$BASE_URL/api/tasks/{id}/status" \
+  -H "Content-Type: application/json" \
+  -d '{"status":"done"}'
+```
+
+#### Deletar tarefa
+```bash
+curl -X DELETE "$BASE_URL/api/tasks/{id}"
+```
+
+### Modelo de tarefa
+O contrato de `Task` está em `contracts/task.schema.json`.
+
+Exemplo de payload para criação:
+```json
+{
+  "title": "Implementar endpoint de tarefa",
+  "description": "Criar API REST para gestão de entregas",
+  "status": "pending"
+}
+```
+
+Campos importantes:
+- `title` (string, obrigatório)
+- `description` (string, opcional)
+- `status` (enum: `pending`, `in-progress`, `done`)
+
+## Testes
+### Testes automatizados
+Use:
+```bash
+npm test
 ```
 
 ### Coleção Postman
-A coleção Postman está em `postman/TaskManagement.postman_collection.json`.
-Use o ambiente `postman/TaskManagement.postman_environment.json` para apontar para `http://localhost:3000`.
+A coleção está em `postman/TaskManagement.postman_collection.json`.
+O ambiente de teste está em `postman/TaskManagement.postman_environment.json`.
 
-### Fluxo de teste recomendado
-1. Executar `POST /api/tasks` para criar uma tarefa
-2. Executar `GET /api/tasks/:id` para consultar a tarefa criada
-3. Executar `PATCH /api/tasks/:id/status` para marcar como `done`
-4. Executar `DELETE /api/tasks/:id` para excluir a tarefa
+Configurar `baseUrl` para:
+```text
+http://localhost:3000
+```
 
-### Notes
-- O JSON Schema valida o corpo da tarefa e garante que `title`, `status`, `createdAt` e `updatedAt` estejam no formato esperado.
-- O status aceito para tarefas é: `pending`, `in-progress`, `done`.
+### Fluxo de validação recomendado
+1. `POST /api/tasks` para criar uma tarefa
+2. `GET /api/tasks/:id` para consultar a tarefa
+3. `PATCH /api/tasks/:id/status` para marcar como `done`
+4. `DELETE /api/tasks/:id` para remover a tarefa
+
+## CI/CD
+O projeto inclui uma workflow do GitHub Actions em `.github/workflows/ci.yml` para:
+- instalar dependências
+- executar testes unitários
+- executar a coleção Newman
+- executar `npm audit --production` em modo de relatório
+
+## Observações importantes
+- O armazenamento atual é em arquivo local (`data/tasks.json`) e serve como persistência simples para desenvolvimento.
+- Docker não é obrigatório para este projeto.
+- Se você não puder instalar Docker, use apenas Node.js e os comandos acima.
+
+## Contato
+Para dúvidas sobre o projeto, abra uma issue no repositório ou entre em contato pelo GitHub.
