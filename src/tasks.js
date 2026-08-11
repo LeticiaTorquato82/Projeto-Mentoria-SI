@@ -37,8 +37,12 @@ function getTask(id) {
   return tasks.get(id);
 }
 
+function getAllTasks() {
+  return Array.from(tasks.values());
+}
+
 router.get('/', (req, res) => {
-  res.json(Array.from(tasks.values()));
+  res.json(getAllTasks());
 });
 
 router.post('/', (req, res) => {
@@ -110,13 +114,74 @@ router.patch('/:id/status', (req, res) => {
   res.json(updated);
 });
 
+function updateTask(id, data) {
+  const existing = getTask(id);
+  if (!existing) {
+    return null;
+  }
+
+  const payload = {
+    ...existing,
+    ...data,
+    id: existing.id,
+    createdAt: existing.createdAt,
+    updatedAt: new Date().toISOString(),
+  };
+
+  const valid = validateUpdate(payload);
+  if (!valid) {
+    throw new Error('Payload inválido para atualização de tarefa');
+  }
+
+  tasks.set(existing.id, payload);
+  persistTasks();
+  return payload;
+}
+
+function updateTaskStatus(id, status) {
+  const existing = getTask(id);
+  if (!existing) {
+    return null;
+  }
+
+  const allowedStatuses = ['pending', 'in-progress', 'done'];
+  if (!allowedStatuses.includes(status)) {
+    throw new Error(`Status inválido. Valores aceitos: ${allowedStatuses.join(', ')}`);
+  }
+
+  const updated = {
+    ...existing,
+    status,
+    updatedAt: new Date().toISOString(),
+  };
+
+  tasks.set(existing.id, updated);
+  persistTasks();
+  return updated;
+}
+
+function deleteTask(id) {
+  const deleted = tasks.delete(id);
+  if (deleted) {
+    persistTasks();
+  }
+  return deleted;
+}
+
 router.delete('/:id', (req, res) => {
-  if (!tasks.delete(req.params.id)) {
+  if (!deleteTask(req.params.id)) {
     return res.status(404).json({ error: 'Task not found' });
   }
 
-  persistTasks();
   res.status(204).send();
 });
 
-module.exports = router;
+module.exports = {
+  router,
+  createTask,
+  getTask,
+  getAllTasks,
+  updateTask,
+  updateTaskStatus,
+  deleteTask,
+};

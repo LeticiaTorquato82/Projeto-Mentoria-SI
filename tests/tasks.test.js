@@ -46,6 +46,12 @@ describe('API de Tarefas - CRUD', () => {
     expect(validateSchema(response.body)).toBe(true);
   });
 
+  it('deve expor a interface GraphiQL', async () => {
+    const response = await request(app).get('/graphiql').expect(200);
+    expect(response.headers['content-type']).toMatch(/html/);
+    expect(response.text).toContain('<div id="graphiql"');
+  });
+
   it('deve deletar a tarefa', async () => {
     await request(app).delete(`/api/tasks/${task.id}`).expect(204);
     await request(app).get(`/api/tasks/${task.id}`).expect(404);

@@ -144,12 +144,92 @@ http://localhost:3000
 3. `PATCH /api/tasks/:id/status` para marcar como `done`
 4. `DELETE /api/tasks/:id` para remover a tarefa
 
+## GraphQL
+Este projeto também inclui um endpoint GraphQL disponível em:
+```text
+http://localhost:3000/graphql
+```
+
+Uma interface de exploração GraphiQL também está disponível em:
+```text
+http://localhost:3000/graphiql
+```
+
+### Consultas de exemplo
+#### Obter todas as tarefas
+```graphql
+query {
+  tasks {
+    id
+    title
+    description
+    status
+    createdAt
+    updatedAt
+  }
+}
+```
+
+#### Obter tarefa por ID
+```graphql
+query {
+  task(id: "1") {
+    id
+    title
+    status
+  }
+}
+```
+
+### Mutations de exemplo
+#### Criar tarefa
+```graphql
+mutation {
+  createTask(input: { title: "Nova tarefa", description: "Descrição", status: "pending" }) {
+    id
+    title
+    status
+  }
+}
+```
+
+#### Atualizar tarefa
+```graphql
+mutation {
+  updateTask(id: "1", input: { title: "Tarefa atualizada", description: "Descrição atualizada", status: "in-progress" }) {
+    id
+    title
+    status
+  }
+}
+```
+
+#### Atualizar status
+```graphql
+mutation {
+  updateTaskStatus(id: "1", status: "done") {
+    id
+    status
+  }
+}
+```
+
+#### Deletar tarefa
+```graphql
+mutation {
+  deleteTask(id: "1")
+}
+```
+
 ## CI/CD
 O projeto inclui uma workflow do GitHub Actions em `.github/workflows/ci.yml` para:
 - instalar dependências
 - executar testes unitários
 - executar a coleção Newman
 - executar `npm audit --production` em modo de relatório
+
+## Tabela de decisão
+A tabela de decisão de regras de negócio está disponível em `DECISION_TABLE.md`.
 
 ## Observações importantes
 - O armazenamento atual é em arquivo local (`data/tasks.json`) e serve como persistência simples para desenvolvimento.
