@@ -55,5 +55,26 @@ jobs:
           name: newman-report
           path: reports/newman/*.html
 
+      - name: Install k6
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y k6
+
+      - name: Run k6 load test
+        run: |
+          mkdir -p reports/k6
+          k6 run --vus 5 --duration 15s --out json=reports/k6/result.json load/test.js
+
+      - name: Generate k6 HTML report
+        run: |
+          npx k6-reporter reports/k6/result.json -o reports/k6/report.html || true
+
+      - name: Upload k6 HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k6-report
+          path: reports/k6/*.html
+
       - name: Run npm audit (report only)
         run: npm audit --production || true
