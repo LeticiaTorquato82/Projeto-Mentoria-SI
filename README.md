@@ -280,7 +280,7 @@ Arquivo:
 
 ---
 
-## 🤝 Contato
+##  Contato
 
 Para dúvidas, sugestões ou melhorias, abra uma issue no repositório ou entre em contato pelo GitHub.
 
