@@ -1,4 +1,4 @@
-# Projeto de API REST para gerenciamento de tarefas de sprint, com foco em automação de testes e validação de contrato.
+# Projeto de API REST para gerenciamento de tarefas de sprint.
 
 [![Build Status](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml/badge.svg)](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima)
