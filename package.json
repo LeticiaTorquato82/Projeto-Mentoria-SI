@@ -39,10 +39,25 @@
   },
   "devDependencies": {
     "jest": "^29.0.0",
+    "jest-html-reporter": "^3.4.0",
     "newman": "^6.2.2",
     "newman-reporter-htmlextra": "^1.23.0",
     "nodemon": "^2.0.22",
     "supertest": "^6.0.0"
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporter",
+        {
+          "pageTitle": "Test Report",
+          "outputPath": "reports/jest/report.html",
+          "includeFailureMsg": true,
+          "includeConsoleLog": true
+        }
+      ]
+    ]
   },
   "bugs": {
     "url": "https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/issues"
