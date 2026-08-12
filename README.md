@@ -1,59 +1,106 @@
-# Mentoria em Sistemas de Informacao
+Task Management API
+API REST e GraphQL desenvolvida para o gerenciamento de tarefas de sprint, com forte foco em automação de testes, validação de contratos e qualidade de software.
 
-![CI](https://img.shields.io/badge/CI-failing-red?style=for-the-badge&logo=githubactions)
-![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)
-![GraphiQL](https://img.shields.io/badge/GraphiQL-enabled-brightgreen?style=for-the-badge)
+🚀 Sobre o Projeto
+Esta aplicação demonstra o ciclo completo de operações CRUD para o acompanhamento de demandas e entregas de sprint. O projeto destaca-se pela implementação de testes automatizados, validação rigorosa de payloads com JSON Schema e suporte a consultas modernas via GraphQL.
 
-API para gestao de tarefas de sprint desenvolvida com Node.js e Express, com foco em automacao de testes, validacao de contratos e integracao continua. O projeto tem como objetivo demonstrar aplicacao de boas praticas em desenvolvimento backend, documentacao de APIs e qualidade de software.
+🛠️ Tecnologias Utilizadas
+Runtime: Node.js (v18+)
 
-## 🚀 Objetivo
+Framework: Express
 
-Este projeto foi desenvolvido para demonstrar conhecimentos em desenvolvimento e qualidade de software, contemplando:
+Validação: Ajv (JSON Schema)
 
-- Construcao de APIs RESTful
-- Modelagem de contratos JSON Schema
-- Automacao de testes de API
-- Integracao continua com GitHub Actions
-- Documentacao de servicos com Swagger
-- Suporte a GraphQL
+Testes Automatizados: Jest + Supertest
 
-## 🏗️ Arquitetura
+Testes de API / CI: Newman + Postman
 
-```text
-src/
-├── controllers/
-├── routes/
-├── services/
-├── schemas/
-├── graphql/
-├── data/
-├── utils/
-├── middlewares/
-├── config/
-└── tests/
+Interface / API Alternativa: GraphQL & GraphiQL
 
-✨ Funcionalidades
-Cadastro, consulta, atualizacao e exclusao de tarefas
-Gestao de sprint e status das atividades
-Validacao de payload com JSON Schema
-Documentacao interativa com Swagger
-Testes automatizados para API
-Pipeline CI/CD
-Suporte a consultas GraphQL
-🛠️ Tecnologias
-Node.js
-Express
-JSON Schema
-Swagger
-GraphQL
-Jest
-Supertest
-GitHub Actions
-📦 Instalacao
-git clone https://github.com/SEU_USUARIO/Mentoria-em-Sistemas-de-Informacao.git
-cd Mentoria-em-Sistemas-de-Informacao
+⚙️ Funcionalidades
+CRUD completo de tarefas.
+
+Gestão de estados: pending, in-progress, done.
+
+Validação de esquemas de dados em JSON.
+
+Endpoints RESTful e suporte a GraphQL.
+
+Persistência local leve baseada em arquivo (data/tasks.json).
+
+Pipeline de Integração Contínua (CI) configurado com GitHub Actions.
+
+📦 Instalação e Execução Local
+Clone o repositório:
+
+Bash
+git clone https://github.com/Letytorquato82/Mentoria-Julio-de-Lima.git
+cd Mentoria-Julio-de-Lima
+Instale as dependências:
+
+Bash
 npm install
-cp .env.example .env
-npm run dev
+Inicie a aplicação:
 
+Bash
+npm start
+A API ficará disponível em http://localhost:3000.
+
+🧪 Comandos Principais
+Comando	Descrição
+npm start	Inicia o servidor da API
+npm test	Executa a suíte de testes unitários/integração (Jest)
+npm run postman	Executa a coleção de testes do Postman via Newman
+npm run audit:fix	Verifica e corrige vulnerabilidades nas dependências
+🔌 Documentação da API (REST)
+Endpoints Principais
+GET /api/tasks — Lista todas as tarefas.
+
+POST /api/tasks — Cria uma nova tarefa.
+
+GET /api/tasks/:id — Obtém uma tarefa específica pelo ID.
+
+PUT /api/tasks/:id — Atualiza todos os dados de uma tarefa.
+
+PATCH /api/tasks/:id/status — Atualiza apenas o estado de uma tarefa.
+
+DELETE /api/tasks/:id — Remove uma tarefa.
+
+Exemplo de Requisição (cURL)
+Bash
+curl -X POST "http://localhost:3000/api/tasks" \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Implementar funcionalidade","description":"Criar API REST para gestão de entregas","status":"pending"}'
+🌐 Endpoints GraphQL
+Podes explorar e testar as queries e mutations diretamente no browser através da interface interativa:
+
+GraphiQL Interface: http://localhost:3000/graphiql
+
+Endpoint GraphQL: http://localhost:3000/graphql
+
+Exemplo de Query (GraphQL)
+GraphQL
+query {
+  tasks {
+    id
+    title
+    status
+    createdAt
+  }
+}
+🤖 CI/CD e Qualidade
+O projeto inclui um workflow automatizado no GitHub Actions (.github/workflows/ci.yml) responsável por:
+
+Instalação limpa de dependências.
+
+Execução de testes automatizados.
+
+Execução de coleções Newman.
+
+Auditoria de segurança de pacotes.
+
+A documentação detalhada das regras de negócio e tabela de decisão encontra-se no ficheiro DECISION_TABLE.md.
+
+📬 Contato
+Se tiveres alguma dúvida sobre a implementação, podes abrir uma issue no repositório ou contactar-me através do GitHub.
 
