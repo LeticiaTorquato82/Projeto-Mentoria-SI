@@ -110,7 +110,7 @@ mindmap
 
 ---
 
-## 📦 Instalação
+##  Instalação
 
 ### 1) Clone o repositório
 ```bash
@@ -196,7 +196,7 @@ curl -X DELETE "http://localhost:3000/api/tasks/1"
 
 ---
 
-## 🧾 Modelo de Dados
+##  Modelo de Dados
 
 ```json
 {
@@ -213,7 +213,7 @@ curl -X DELETE "http://localhost:3000/api/tasks/1"
 
 ---
 
-## 🧪 Testes
+##  Testes
 
 ### Testes automatizados
 ```bash
@@ -227,7 +227,7 @@ A coleção e o ambiente de teste estão localizados em:
 
 ---
 
-## 📡 GraphQL
+##  GraphQL
 
 O projeto também oferece suporte a GraphQL:
 
