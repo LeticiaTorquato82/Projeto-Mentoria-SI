@@ -1,44 +1,49 @@
-markdown_content = """# Task Management API
+# Mentoria em Sistemas de Informacao
 
-[![Build Status](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml/badge.svg)](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima)
-[![GraphiQL](https://img.shields.io/badge/GraphiQL-enabled-brightgreen.svg)](http://localhost:3000/graphiql)
+![CI](https://img.shields.io/badge/CI-failing-red?style=for-the-badge&logo=githubactions)
+![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)
+![GraphiQL](https://img.shields.io/badge/GraphiQL-enabled-brightgreen?style=for-the-badge)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
-> API REST e GraphQL desenvolvida para o gerenciamento de tarefas de sprint, com forte foco em **automação de testes**, **validação de contratos** e **qualidade de software**.
+API para gestao de tarefas de sprint desenvolvida com Node.js e Express, com foco em automacao de testes, validacao de contratos e integracao continua. O projeto tem como objetivo demonstrar boas praticas em desenvolvimento backend, documentacao de APIs e qualidade de software.
 
----
+## 🚀 Objetivo
 
-## 🚀 Sobre o Projeto
+Este projeto foi desenvolvido para demonstrar conhecimentos em desenvolvimento e qualidade de software, contemplando:
 
-Esta aplicação demonstra o ciclo completo de operações **CRUD** para o acompanhamento de demandas e entregas de sprint. O projeto destaca-se pela implementação de testes automatizados, validação rigorosa de payloads com JSON Schema e suporte a consultas modernas via GraphQL.
+- Construcao de APIs RESTful
+- Modelagem de contratos JSON Schema
+- Automacao de testes de API
+- Integracao continua com GitHub Actions
+- Documentacao de servicos com Swagger
+- Suporte a GraphQL
 
----
+## 🧩 Visao Geral
 
-## 🛠️ Tecnologias Utilizadas
+O sistema permite o gerenciamento de tarefas de sprint, incluindo cadastro, consulta, atualizacao e exclusao de registros. A aplicacao foi estruturada para incentivar boas praticas de arquitetura, manutencao e validacao de regras de negocio.
 
-* **Runtime:** Node.js (v18+)
-* **Framework:** Express
-* **Validação:** Ajv (JSON Schema)
-* **Testes Automatizados:** Jest + Supertest
-* **Testes de API / CI:** Newman + Postman
-* **Interface / API Alternativa:** GraphQL & GraphiQL
+A proposta do projeto tambem inclui:
 
----
+- separacao por responsabilidades
+- uso de validacao de entrada
+- documentacao de endpoints
+- automatizacao de testes
+- suporte a consulta via GraphQL
+- pipeline de integracao continua
 
-## ⚙️ Funcionalidades
+## 🏗️ Arquitetura
 
-* CRUD completo de tarefas.
-* Gestão de estados: `pending`, `in-progress`, `done`.
-* Validação de esquemas de dados em JSON.
-* Endpoints RESTful e suporte a GraphQL.
-* Persistência local leve baseada em ficheiro (`data/tasks.json`).
-* Pipeline de Integração Contínua (CI) configurado com GitHub Actions.
-
----
-
-## 📦 Instalação e Execução Local
-
-1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/Letytorquato82/Mentoria-Julio-de-Lima.git](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima.git)
-   cd Mentoria-Julio-de-Lima
+```text
+src/
+├── controllers/
+├── routes/
+├── services/
+├── schemas/
+├── graphql/
+├── data/
+├── utils/
+├── middlewares/
+├── config/
+├── app.js
+├── server.js
+└── tests/
