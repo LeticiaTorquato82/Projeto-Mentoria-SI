@@ -8,6 +8,7 @@
     "dev": "nodemon src/index.js",
     "test": "jest --runInBand",
     "postman": "newman run postman/TaskManagement.postman_collection.json -e postman/TaskManagement.postman_environment.json",
+    "postman:html": "newman run postman/TaskManagement.postman_collection.json -e postman/TaskManagement.postman_environment.json -r htmlextra --reporter-htmlextra-export ./reports/newman/report.html",
     "audit:fix": "npm audit fix --force"
   },
   "overrides": {
@@ -39,6 +40,7 @@
   "devDependencies": {
     "jest": "^29.0.0",
     "newman": "^6.2.2",
+    "newman-reporter-htmlextra": "^1.23.0",
     "nodemon": "^2.0.22",
     "supertest": "^6.0.0"
   },

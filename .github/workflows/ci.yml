@@ -27,8 +27,26 @@ jobs:
       - name: Run unit tests
         run: npm test
 
+      - name: Start API server in background
+        run: |
+          npm start &
+          # wait for server to be ready
+          for i in {1..15}; do
+            if curl --silent --fail http://localhost:3000/api/health; then
+              echo "server up"; break
+            fi
+            sleep 1
+          done
+
       - name: Run Newman collection
-        run: npm run postman
+        run: npm run postman:html || npm run postman
+
+      - name: Upload Newman HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-report
+          path: reports/newman/*.html
 
       - name: Run npm audit (report only)
         run: npm audit --production || true
