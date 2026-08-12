@@ -1,37 +1,47 @@
-# Mentoria-Julio-de-Lima
+# Task Management API
 
 [![Build Status](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml/badge.svg)](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima)
 [![GraphiQL](https://img.shields.io/badge/GraphiQL-enabled-brightgreen.svg)](http://localhost:3000/graphiql)
 
-Projeto de API REST para gerenciamento de tarefas de sprint, com foco em automação de testes e validação de contrato.
+> API REST e GraphQL desenvolvida para o gerenciamento de tarefas de sprint, com forte foco em **automação de testes**, **validação de contratos** e **qualidade de software**.
 
-## Descrição do projeto
-Esta aplicação é uma API simples de acompanhamento de entregas de demandas. O objetivo é demonstrar o ciclo completo de CRUD de uma tarefa, com validação por JSON Schema e testes automatizados.
+---
 
-## Tecnologias utilizadas
-- Node.js
-- Express
-- Ajv (validação JSON Schema)
-- Jest + Supertest (testes automatizados)
-- Newman + Postman (coleção de testes de API)
+## 🚀 Sobre o Projeto
 
-## Recursos implementados
-- CRUD completo de tarefas
-- Status de tarefa: `pending`, `in-progress`, `done`
-- Validação de payloads com JSON Schema
-- Rotas RESTful para gerenciamento de tarefas
-- Persistência temporária em arquivo local (`data/tasks.json`)
-- Workflow CI no GitHub Actions
+Esta aplicação demonstra o ciclo completo de operações **CRUD** para o acompanhamento de demandas e entregas de sprint. O projeto destaca-se pela implementação de testes automatizados, validação rigorosa de payloads com JSON Schema e suporte a consultas modernas via GraphQL.
 
-## Requisitos
-- Node.js 18 ou superior
-- npm instalado
+---
 
-> Docker é opcional. Esta documentação presume execução local com Node.js.
+## 🛠️ Tecnologias Utilizadas
 
-## Instalação e execução
-1. Clone o repositório e entre na pasta do projeto.
+* **Runtime:** Node.js (v18+)
+* **Framework:** Express
+* **Validação:** Ajv (JSON Schema)
+* **Testes Automatizados:** Jest + Supertest
+* **Testes de API / CI:** Newman + Postman
+* **Interface / API Alternativa:** GraphQL & GraphiQL
+
+---
+
+## ⚙️ Funcionalidades
+
+* CRUD completo de tarefas.
+* Gestão de estados: `pending`, `in-progress`, `done`.
+* Validação de esquemas de dados em JSON.
+* Endpoints RESTful e suporte a GraphQL.
+* Persistência local leve baseada em arquivo (`data/tasks.json`).
+* Pipeline de Integração Contínua (CI) configurado com GitHub Actions.
+
+---
+
+## 📦 Instalação e Execução Local
+
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/Letytorquato82/Mentoria-Julio-de-Lima.git](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima.git)
+   cd Mentoria-Julio-de-Lima
 2. Instale dependências:
    ```bash
    npm install
