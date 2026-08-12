@@ -1,14 +1,14 @@
-# 🧩 Task Management API
+#  Task Management API
 
 [![Build Status](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml/badge.svg)](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/Letytorquato82/Mentoria-Julio-de-Lima)
 [![GraphiQL](https://img.shields.io/badge/GraphiQL-enabled-brightgreen.svg)](http://localhost:3000/graphiql)
 
-> 🚀 API REST e GraphQL para gestão de tarefas de sprint, com foco em automação de testes, validação de contratos e garantia de qualidade.
+>  API REST e GraphQL para gestão de tarefas de sprint, com foco em automação de testes, validação de contratos e garantia de qualidade.
 
 ---
 
-## ✨ Visão Geral
+##  Visão Geral
 
 Esta aplicação foi desenvolvida para demonstrar um fluxo completo de gerenciamento de tarefas em sprint, cobrindo operações de criação, leitura, atualização e exclusão de itens, além de suporte a consultas via GraphQL.
 
@@ -20,7 +20,7 @@ Com foco em qualidade de software, o projeto incorpora:
 
 ---
 
-## 🏗️ Arquitetura do Projeto
+##  Arquitetura do Projeto
 
 ```mermaid
 flowchart TD
@@ -42,12 +42,12 @@ flowchart TD
 ```mermaid
 mindmap
   root((Task Management API))
-    🧩 Core
+     Core
       REST API
       GraphQL API
       Express Server
 
-    📋 Tasks
+     Tasks
       Create
       Read
       Update
@@ -57,27 +57,27 @@ mindmap
         in-progress
         done
 
-    ✅ Quality
+     Quality
       JSON Schema Validation
       Error Handling
       Automated Tests
       Postman Collection
       CI/CD Pipeline
 
-    🧪 Testing
+     Testing
       Jest
       Supertest
       Newman
       GitHub Actions
 
-    ⚙️ Stack
+     Stack
       Node.js
       Express
       Ajv
       GraphQL
       File Storage
 
-    🚀 Delivery
+     Delivery
       Local Run
       API Docs
       GitHub Repo
@@ -86,7 +86,7 @@ mindmap
 
 ---
 
-## 🛠️ Stack Tecnológica
+##  Stack Tecnológica
 
 - **Node.js** 18+
 - **Express**
@@ -98,7 +98,7 @@ mindmap
 
 ---
 
-## ✅ Funcionalidades
+##  Funcionalidades
 
 - CRUD completo de tarefas
 - Controle de status: `pending`, `in-progress`, `done`
@@ -135,7 +135,7 @@ http://localhost:3000
 
 ---
 
-## 🧪 Comandos Úteis
+##  Comandos Úteis
 
 - `npm install` — instala as dependências
 - `npm start` — inicia a API
@@ -145,7 +145,7 @@ http://localhost:3000
 
 ---
 
-## 📚 Endpoints REST
+##  Endpoints REST
 
 - `GET /api/tasks` — lista todas as tarefas
 - `POST /api/tasks` — cria uma nova tarefa
@@ -156,7 +156,7 @@ http://localhost:3000
 
 ---
 
-## 🌐 Exemplos de Requisição
+##  Exemplos de Requisição
 
 ### Listar tarefas
 ```bash
@@ -259,7 +259,7 @@ mutation {
 
 ---
 
-## 🚦 CI/CD
+##  CI/CD
 
 O projeto inclui pipeline automatizado em GitHub Actions para:
 - instalação de dependências
@@ -272,7 +272,7 @@ Arquivo:
 
 ---
 
-## 📌 Observações
+##  Observações
 
 - A persistência atual é local, em arquivo.
 - O objetivo principal é demonstrar arquitetura, qualidade e testes em API.
