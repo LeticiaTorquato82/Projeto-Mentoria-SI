@@ -10,7 +10,6 @@ API para gestao de tarefas de sprint desenvolvida com Node.js e Express, com foc
 ## 🚀 Objetivo
 
 Este projeto foi desenvolvido para demonstrar conhecimentos em desenvolvimento e qualidade de software, contemplando:
-
 - Construcao de APIs RESTful
 - Modelagem de contratos JSON Schema
 - Automacao de testes de API
@@ -18,18 +17,17 @@ Este projeto foi desenvolvido para demonstrar conhecimentos em desenvolvimento e
 - Documentacao de servicos com Swagger
 - Suporte a GraphQL
 
-## 🧩 Visao Geral
+## 📌 Visao Geral
 
 O sistema permite o gerenciamento de tarefas de sprint, incluindo cadastro, consulta, atualizacao e exclusao de registros. A aplicacao foi estruturada para incentivar boas praticas de arquitetura, manutencao e validacao de regras de negocio.
 
-A proposta do projeto tambem inclui:
-
+Este projeto foi pensado para demonstrar:
 - separacao por responsabilidades
-- uso de validacao de entrada
+- validacao de entradas
 - documentacao de endpoints
 - automatizacao de testes
-- suporte a consulta via GraphQL
-- pipeline de integracao continua
+- suporte a consultas GraphQL
+- integracao continua e entrega automatizada
 
 ## 🏗️ Arquitetura
 
@@ -46,4 +44,6 @@ src/
 ├── config/
 ├── app.js
 ├── server.js
+├── db/
+├── validators/
 └── tests/
